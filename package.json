@@ -1,0 +1,15 @@
+{
+  "name": "test-tree-sitter-nix",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "tree-sitter": "^0.15.1",
+    "tree-sitter-nix": "git+https://git@github.com/cstrahan/tree-sitter-nix.git"
+  }
+}
