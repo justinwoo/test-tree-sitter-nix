@@ -8,3 +8,5 @@ const sourceCode = 'let x = "hi"; in "yes: ${hi}"';
 const tree = parser.parse(sourceCode);
 
 console.log(tree.rootNode.toString());
+
+module.exports = tree
