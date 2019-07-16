@@ -5,35 +5,31 @@ const parser = new Parser();
 parser.setLanguage(Nix);
 
 const sourceCode = `
-let
-  x = 1;
-  y = "no";
-  z = "wef";
-in "yes: \${hi}"
+a.b.(1 + 2)
 `;
 const tree = parser.parse(sourceCode);
 
 console.log(tree.rootNode.toString());
 
 const root = tree.rootNode;
-const let_ = root.children[0]
+const first = root.children[0]
 
 function printChildren(x) {
+  console.log({ type: x.type, string: x.toString() })
   x.children.map((x, i) => {
-    console.log(`child ${i}`)
-    console.log(x.type)
-    console.log(x.text)
-    console.log(x.isNamed)
-    console.log()
+    console.log({
+      i: i,
+      type: x.type,
+      text: x.text,
+      named: x.isNamed
+    })
   });
+  console.log()
 }
 
-printChildren(let_)
-
-let bind_ = let_.children[1]
-console.log('bind', bind_)
-printChildren(bind_)
+printChildren(first)
+printChildren(first.children[2])
 
 module.exports = {
-  Parser, Nix, parser, tree, let_, bind_
+  Parser, Nix, parser, tree, first
 }
